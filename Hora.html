@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hora</title>
+</head>
+<body>
+    <style>
+        body{
+            background: rgb(90, 90, 236);
+        }
+
+        header{
+            text-align: center;
+            color: white;
+        }
+        input{
+            margin-left: 35%;
+            width: 198px;
+            height: 30px;
+            margin: auto;
+        }
+        section{
+            
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.301);
+        }
+        footer{
+            color: white;
+            text-align: center;
+        }
+    </style>
+    
+    <header> 
+    <h1>horas do dia </h1>        
+    </header>
+<!-- topo da pagina -->
+
+    <input type="datetime" name="text" id="text">
+    <input type="button" value="hora" onclick="carregar()">
+    <!-- declarei uma função, que no caso é carregar  -->
+<!-- caixa de texto aonde vai a hora desejada -->
+   
+    <section>
+<!-- section aonde vai duas div uma para a mensagem  e a outra para a imagem -->
+       <!-- div com a mensagem -->
+        <div id="ms">
+        </div>   
+        <!-- div com a imagem -->
+        <div id="foto">
+            <img id="imagem" src="manhã.png" alt="foto do dia">
+        </div>
+    </section>
+    <!-- footer o rodape da pagina  -->
+    <footer>
+        <p>testeGeovane</p>
+    </footer>
+    
+    <!-- parte do javaScript -->
+    <script>
+        function carregar(){  // peguei a função carregar q declarei lá no html
+           
+            var p1 = window.document.getElementById('text')// variavel que ta pegando os dados do meu input
+            var p2 = window.document.getElementById('ms')// variavel que esta pegando a mensagem da minha div no html
+            var img = window.document.getElementById('imagem')// variavel que esta pegando a imagem
+            var hora = Number(p1.value)
+            
+            p2.innerHTML = `Agora são ${hora} horas.` // pedi para a variavel p2 que esta recebendo minha mensagem escrever na tela
+          // aqui é muito importante, porque vai toda a logica do programa  
+            if(hora >= 0 && hora < 12){ // quando minha variavel hora for maior ou igual a 0 é hora for menor que 12 tenho manhã 
+                img.src =  'manhã.png' // estou pegando a imagem lá no meu html
+                document.body.style.backgroundColor = '#F5C80C' //to mudando a cor de fundo dá pagina  
+                p2.style.color = '#F5C80C'// mudando a cor da letra da mensagem
+            }else if(hora >= 12 && hora < 18){// não se hora quando for maior que 12 é hora menor que 18, temos boa tarde
+                img.src =   'tarde.png'
+                document.body.style.backgroundColor = '#F5780D'
+                p2.style.color = '#F5780D'
+            }else{// se não é boa noite
+                img.src =  'noite.png'
+                document.body.style.backgroundColor = '#030426'
+                p2.style.color = '#030426'
+            }
+        }
+    </script>
+</body>
+</html>
